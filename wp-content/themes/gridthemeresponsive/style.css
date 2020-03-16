@@ -167,10 +167,23 @@ h1 {
 #menu-main li{
     margin-right:20px;
     cursor: pointer;
+    position: relative;
 }
-#menu-main li:hover{
-    text-decoration:line-through ;
+
+#menu-main li::before {
+    position: absolute;
+    top: 18px;
+    content: "";
+    height: 5px;
+    width: 0;
+    background-color:white;
+    transition: width .2s ease-in-out;
 }
+
+#menu-main li:hover::before {
+    width: 30%;
+}
+
 
 
 /* Special Color Helper Classes */
