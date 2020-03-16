@@ -179,9 +179,9 @@ h1 {
 #menu-main a:hover::before {
     width: 30px;
 }
-.black a::before {background-color: black;}
+a.black::before {background-color: black;}
 a::before {background-color: black;}
-.white a::before {background-color: white !important;}
+a.white::before {background-color: white !important;}
 
 /* Special Color Helper Classes */
 
@@ -193,9 +193,9 @@ a::before {background-color: black;}
     color: white !important;
 }
 .hide {
-    display: 0;
+    color: transparent !important;
 }
-
+.hide::before {background-color: transparent !important;}
 .colorize {
     background: linear-gradient(-45deg, rgb(77, 255, 173), rgb(52, 156, 187), hsla(269, 100%, 71%, 1)/*Lul why is there a hsla value in here*/, rgb(243, 195, 200), rgb(255, 80, 52));
     background-size: 500% 100%;
