@@ -2,7 +2,7 @@
 <div id="intro">
     <div id="introbg"></div>
     <div id="welcomeTxt">
-        <p class="opener">Brian Sander is a <span id="headline" class="headline rev">Product Designer</span> with 6 years of experience making the world a better place.</p>
+        <p class="opener">Brian Sander is a <span id="headline" class="headline rev">Product Designer</span> with 7 years of experience making the world a better place.</p>
     </div>
     <script text="text/javascript">
         $(document).ready(function() {
