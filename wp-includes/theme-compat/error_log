@@ -1,0 +1,12 @@
+[11-Feb-2018 16:28:20] PHP Fatal error:  Call to undefined function  post_class() in /home4/briansan/public_html/wp-includes/theme-compat/embed-content.php on line 13
+[11-Feb-2018 16:28:28] PHP Fatal error:  Call to undefined function  post_class() in /home4/briansan/public_html/wp-includes/theme-compat/embed-content.php on line 13
+[11-Feb-2018 16:28:37] PHP Fatal error:  Call to undefined function  post_class() in /home4/briansan/public_html/wp-includes/theme-compat/embed-content.php on line 13
+[11-Feb-2018 16:28:46] PHP Fatal error:  Call to undefined function  post_class() in /home4/briansan/public_html/wp-includes/theme-compat/embed-content.php on line 13
+[30-Jan-2019 07:19:06 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function _deprecated_file() in /home4/briansan/public_html/wp-includes/theme-compat/comments.php:10
+Stack trace:
+#0 {main}
+  thrown in /home4/briansan/public_html/wp-includes/theme-compat/comments.php on line 10
+[30-Jan-2019 12:23:13 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home4/briansan/public_html/wp-includes/theme-compat/embed.php:13
+Stack trace:
+#0 {main}
+  thrown in /home4/briansan/public_html/wp-includes/theme-compat/embed.php on line 13
