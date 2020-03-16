@@ -1,0 +1,30 @@
+@-webkit-keyframes spinBefore{
+  0%{-webkit-transform:rotate(0);top:-8px;}
+  50%{-webkit-transform:rotate(0);top:0;}
+  100%{-webkit-transform:rotate(45deg);}
+}
+@-moz-keyframes spinBefore{
+  0%{-moz-transform:rotate(0);top:-8px;}
+  50%{-moz-transform:rotate(0);top:0;}
+  100%{-moz-transform:rotate(45deg);}
+}
+@keyframes spinBefore{
+  0%{transform:rotate(0);top:-8px;}
+  50%{transform:rotate(0);top:0;}
+  100%{transform:rotate(45deg);}
+}
+@-webkit-keyframes spinAfter{
+  0%{-webkit-transform:rotate(0);top:6px;}
+  50%{-webkit-transform:rotate(0);top:0;}
+  100%{-webkit-transform:rotate(-45deg);}
+}
+@-moz-keyframes spinAfter{
+  0%{-moz-transform:rotate(0);top:6px;}
+  50%{-moz-transform:rotate(0);top:0;}
+  100%{-moz-transform:rotate(-45deg);}
+}
+@keyframes spinAfter{
+  0%{transform:rotate(0);top:6px;}
+  50%{transform:rotate(0);top:0;}
+  100%{transform:rotate(-45deg);}
+}
