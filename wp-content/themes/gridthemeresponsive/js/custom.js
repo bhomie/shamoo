@@ -23,10 +23,10 @@ $(".btnBack").click(function () { //Close Button
     $("#contact-content").removeClass('reveal');
     $("#about-content").removeClass('reveal');
     $("#work-content").removeClass('reveal');
-    $("#menu-content").find("a.trans").removeClass("trans");
+    $("#menu-content").find("a.hide").removeClass("hide");
 });
 $("#menu-content a").click(function () {
-    $("#menu-content").find("a.trans").removeClass("trans");
-    $(this).addClass("trans");
+    $("#menu-content").find("a.hide").removeClass("hide");
+    $(this).addClass("hide");
 });
 });
