@@ -143,9 +143,6 @@ h1 {
 
 /* Header - Global */
 
-.logo {
-}
-
 #menu-content {
     left: 10vw;
     top: 40px;
@@ -184,7 +181,7 @@ h1 {
 }
 .black a::before {background-color: black;}
 a::before {background-color: black;}
-.white a::before {background-color: white;}
+.white a::before {background-color: white !important;}
 
 /* Special Color Helper Classes */
 
@@ -219,7 +216,6 @@ a::before {background-color: black;}
     color: white;
 }
 
-#headline {}
 .opener{
     font-size: 4em;
     line-height: 1em;
@@ -545,8 +541,6 @@ a::before {background-color: black;}
         margin-bottom: 0
     }
 }
-
-#c-bg {}
 
 #c-content {
     padding-top: 15vh;
