@@ -170,21 +170,21 @@ h1 {
     position: relative;
 }
 
-#menu-main li::before {
+#menu-main a::before {
     position: absolute;
     top: 18px;
     content: "";
     height: 5px;
     width: 0;
-    background-color:white;
     transition: width .2s ease-in-out;
 }
 
-#menu-main li:hover::before {
-    width: 30%;
+#menu-main a:hover::before {
+    width: 30px;
 }
-
-
+.black a::before {background-color: black;}
+a::before {background-color: black;}
+.white a::before {background-color: white;}
 
 /* Special Color Helper Classes */
 
