@@ -184,7 +184,7 @@ a::before {background-color: black;}
 a.white::before {background-color: white !important;}
 
 .active::before {
-    width: 30px;
+    width: 30px !important;
 }
 
 /* Special Color Helper Classes */
