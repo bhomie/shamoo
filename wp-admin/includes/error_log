@@ -1,4 +1,0 @@
-[18-Aug-2016 10:52:53 America/Denver] PHP Fatal error:  Class 'WP_Filesystem_Base' not found in /home4/briansan/public_html/wp-admin/includes/class-wp-filesystem-ftpext.php on line 17
-[31-Dec-2016 10:16:28] PHP Fatal error:  Class 'WP_Filesystem_Base' not found in /home4/briansan/public_html/wp-admin/includes/class-wp-filesystem-ftpext.php on line 17
-[30-Jan-2019 06:20:46 America/Chicago] PHP Fatal error:  Class 'ftp_base' not found in /home4/briansan/public_html/wp-admin/includes/class-ftp-pure.php on line 28
-[30-Jan-2019 08:49:41 America/Chicago] PHP Fatal error:  Class 'WP_List_Table' not found in /home4/briansan/public_html/wp-admin/includes/class-wp-plugins-list-table.php on line 18

@@ -1,3 +1,0 @@
-[30-Jan-2019 10:57:26 America/Chicago] PHP Fatal error:  Class 'SimplePie_Cache_DB' not found in /home4/briansan/public_html/wp-includes/SimplePie/Cache/MySQL.php on line 57
-[30-Jan-2019 10:57:26 America/Chicago] PHP Fatal error:  Class 'SimplePie_Cache_DB' not found in /home4/briansan/public_html/wp-includes/SimplePie/Cache/MySQL.php on line 57
-[30-Jan-2019 14:36:45 America/Chicago] PHP Fatal error:  Interface 'SimplePie_Cache_Base' not found in /home4/briansan/public_html/wp-includes/SimplePie/Cache/File.php on line 51

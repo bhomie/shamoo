@@ -1,4 +1,0 @@
-[30-Jan-2019 14:41:20 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'getid3_lib' not found in /home4/briansan/public_html/wp-includes/ID3/module.audio-video.quicktime.php:18
-Stack trace:
-#0 {main}
-  thrown in /home4/briansan/public_html/wp-includes/ID3/module.audio-video.quicktime.php on line 18
