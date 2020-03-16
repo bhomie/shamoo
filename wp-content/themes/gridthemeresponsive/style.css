@@ -167,11 +167,24 @@ h1 {
 #menu-main li{
     margin-right:20px;
     cursor: pointer;
-}
-#menu-main li:hover{
-    text-decoration:line-through ;
+    position: relative;
 }
 
+#menu-main a::before {
+    position: absolute;
+    top: 18px;
+    content: "";
+    height: 5px;
+    width: 0;
+    transition: width .2s ease-in-out;
+}
+
+#menu-main a:hover::before {
+    width: 30px;
+}
+.black a::before {background-color: black;}
+a::before {background-color: black;}
+.white a::before {background-color: white;}
 
 /* Special Color Helper Classes */
 
@@ -182,8 +195,8 @@ h1 {
 .white {
     color: white !important;
 }
-.trans {
-    color: transparent !important
+.hide {
+    display: 0;
 }
 
 .colorize {
@@ -464,16 +477,6 @@ h1 {
     text-align: center;
     margin-top: 10px;
 }
-
-
-/*PW
-#pwC{width: 80%;padding: 40vh 10% 0;height: 60vh;}
-.pwI{width:100%;text-align: center;padding: 20px 0;display: block;border: 1px dotted black;margin-bottom: 5px;border-radius: 5px;font-size: 200%;}
-.pwI:focus{border:solid 1px;color:#2ed994;}
-.fs{font-size: 100%; cursor: pointer; background: #2ed994;color:white;border: none;}
-.fs:hover{background-color: #33ffad;}
-*/
-
 
 /* Footer */
 
