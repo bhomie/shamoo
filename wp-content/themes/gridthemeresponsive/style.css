@@ -183,6 +183,10 @@ a.black::before {background-color: black;}
 a::before {background-color: black;}
 a.white::before {background-color: white !important;}
 
+.active::before {
+    width: 30px;
+}
+
 /* Special Color Helper Classes */
 
 .black {
@@ -192,10 +196,7 @@ a.white::before {background-color: white !important;}
 .white {
     color: white !important;
 }
-.hide {
-    color: transparent !important;
-}
-.hide::before {background-color: transparent !important;}
+
 .colorize {
     background: linear-gradient(-45deg, rgb(77, 255, 173), rgb(52, 156, 187), hsla(269, 100%, 71%, 1)/*Lul why is there a hsla value in here*/, rgb(243, 195, 200), rgb(255, 80, 52));
     background-size: 500% 100%;
