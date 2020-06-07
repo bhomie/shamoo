@@ -1,0 +1,95 @@
+/* reset */
+*,::after,::before{box-sizing:border-box}ol[class],ul[class]{padding:0}blockquote,body,dd,dl,figure,h1,h2,h3,h4,ol[class],p,ul[class]{margin:0}html{font-size: 62.5%;scroll-behavior:smooth}body{min-height:100vh;text-rendering:optimizeSpeed;line-height:1.5}ol[class],ul[class]{list-style:none}a:not([class]){text-decoration-skip-ink:auto}img{max-width:100%;display:block}article>*+*{margin-top:1em}button,input,select,textarea{font:inherit}img:not([alt]){filter:blur(10px)}@media (prefers-reduced-motion:reduce){*{animation-duration:0s!important;animation-iteration-count:1!important;transition-duration:0s!important;scroll-behavior:auto!important}}
+/* font-size set to 10px per rem */
+
+:root {
+  --main-text-color: white;
+}
+
+/* main */
+body {
+  color: var(--main-text-color);
+  font-size: 1.6rem;
+  font-family: 'Raleway', sans-serif;
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(-45deg, rgb(77, 255, 173), rgb(52, 156, 187), rgb(179, 107, 255), rgb(243, 195, 200), rgb(255, 80, 52));
+  animation: slideBG 20s ease-in-out infinite;
+  background-size: 1000% 100%;
+}
+
+@keyframes slideBG { 
+  0% {background-position: top left;} 
+  50% {background-position: bottom right;} 
+  100% {background-position: top left;}
+}
+
+/* Nav */
+.nav {
+  display: grid;
+  grid-template-columns: auto auto auto auto 1fr;
+  gap: 1.2rem;
+  z-index: 2;
+}
+
+.nav__button {
+  outline: 0;
+  box-shadow: 0;
+  cursor: pointer;
+  padding: 0;
+  border: 0;
+  background: 0;
+  color: var(--main-text-color);
+  text-transform: uppercase;
+  font-weight: 900;
+  position: relative;
+}
+
+.nav__button::before {
+  position: absolute;
+  top: 100%;
+  content: "";
+  height: .4rem;
+  width: 0;
+  transition: width .2s ease-in-out;
+  background-color: var(--main-text-color);
+}
+
+.nav__button:hover::before {
+  width: 3rem;
+}
+
+/* footer */
+.footer {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* content */
+.container {
+  padding: 5.4rem;
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
+  gap: 2rem;
+  align-items: center;
+}
+
+.intro {
+  font-weight: 900;
+  font-size: 8rem;
+  text-transform: uppercase;
+  line-height: 90%;
+}
+
+.shade {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--main-text-color);
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  opacity: .95;
+  backdrop-filter: blur(.8rem);
+}
