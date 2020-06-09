@@ -94,7 +94,6 @@ body {
   z-index: 1;
   top: 0;
   left: 0;
-  backdrop-filter: blur(.8rem);
   opacity: 0;
   transition: .2s ease-in-out;
 }

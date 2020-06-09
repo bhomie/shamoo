@@ -1,29 +1,28 @@
-const navButton = document.querySelectorAll('button')
+const navButtons = document.querySelectorAll('button')
+const navSections = document.querySelectorAll('section')
 const shade = document.querySelector('div.shade')
+
 let clickedButton = ""
 
 
-for (i = 0; i < navButton.length; i++) {
-  navButton[i].addEventListener('click', () =>
-  revealSection()
-)}
+navButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    revealSection()
+  })
+})
 
 function revealSection() {
-  let inactive = document.querySelectorAll('section')
-  clickedButton = (event.target)
+  clickedButton = event.target
 
-  for(i = 0; i < inactive.length; i++) {
-     inactive[i].classList.remove('-reveal')
-  }
-  for(i = 0; i < navButton.length; i++) {
-      navButton[i].classList.remove('-active')
-  }
+  navButtons.forEach((button, index) => {
+    if(clickedButton.getAttribute('navTo') == navSections[index].getAttribute('content')) {
+      button.classList.add('-active')
+      navSections[index].classList.add('-reveal')
+    } else {
+      button.classList.remove('-active')
+      navSections[index].classList.remove('-reveal')
+    }
+  })
 
-  clickedButton.classList.add('-active')
-  
-  let matchedSection = document.querySelector('section[content='+clickedButton.getAttribute('navTo')+']')
-  
-
-  matchedSection.classList.add('-reveal')
   shade.classList.add('-reveal')
   }
