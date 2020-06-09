@@ -4,6 +4,8 @@
 
 :root {
   --main-text-color: white;
+  
+  --container-padding: 5.4rem;
 }
 
 /* main */
@@ -29,7 +31,7 @@ body {
   display: grid;
   grid-template-columns: auto auto auto auto 1fr;
   gap: 1.2rem;
-  z-index: 2;
+  z-index: 3;
 }
 
 .nav__button {
@@ -51,11 +53,12 @@ body {
   content: "";
   height: .4rem;
   width: 0;
-  transition: width .2s ease-in-out;
+  transition: width .1s ease-in-out;
   background-color: var(--main-text-color);
 }
 
-.nav__button:hover::before {
+.nav__button:hover::before,
+.nav__button.-active::before {
   width: 3rem;
 }
 
@@ -67,7 +70,7 @@ body {
 
 /* content */
 .container {
-  padding: 5.4rem;
+  padding: var(--container-padding);
   display: grid;
   min-height: 100vh;
   grid-template-rows: auto 1fr auto;
@@ -85,11 +88,38 @@ body {
 .shade {
   width: 100vw;
   height: 100vh;
-  background-color: var(--main-text-color);
+  /* background-color: var(--main-text-color); */
+  background-color: black;
   position: absolute;
   z-index: 1;
   top: 0;
   left: 0;
-  opacity: .95;
   backdrop-filter: blur(.8rem);
+  opacity: 0;
+  transition: .2s ease-in-out;
+}
+
+.shade.-reveal {
+  opacity: .95;
+}
+
+.shadeContent{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: CALC(100vw - (2 * var(--container-padding)));
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: var(--container-padding);
+}
+
+.shadeContent__container {
+  position: absolute;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+}
+.shadeContent__container.-reveal {
+  opacity: 1;
 }
