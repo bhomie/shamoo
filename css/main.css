@@ -114,6 +114,7 @@ body {
   align-items: center;
   padding: var(--container-padding);
   user-select: none;
+  overflow: hidden;
 }
 
 .shadeContent__container {
