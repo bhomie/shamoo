@@ -1,4 +1,4 @@
-const navButtons = document.querySelectorAll('button')
+const navButtons = document.querySelectorAll('button.nav__button')
 const navSections = document.querySelectorAll('section')
 const shade = document.querySelector('div.shade')
 const nav = document.querySelector('nav')
@@ -28,3 +28,4 @@ function revealSection() {
   nav.classList.add('-inverse')
   shade.classList.add('-reveal')
   }
+

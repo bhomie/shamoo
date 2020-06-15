@@ -98,19 +98,18 @@ body {
 
 .shade {
   width: 100vw;
-  height: 100vh;
+  height: 0;
   background-color: var(--main-text-color);
-  /* background-color: black; */
   position: absolute;
   z-index: 1;
   top: 0;
   left: 0;
-  opacity: 0;
-  transition: .2s ease-in-out;
+  will-change: height;
+  transition: height .2s ease-in-out;
 }
 
 .shade.-reveal {
-  opacity: .95;
+  height: 100vh;
 }
 
 .shadeContent{
@@ -153,7 +152,7 @@ body {
 
 .shadeContent__body {
   font-size: 2rem;
-  line-height: 2.5rem;
+  line-height: 2.8rem;
   margin-bottom: 2rem;
 }
 
