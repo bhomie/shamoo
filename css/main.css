@@ -7,7 +7,7 @@
   --inverse-text-color: black;
   --rainbow: linear-gradient(-45deg, rgb(77, 255, 173), rgb(52, 156, 187), rgb(179, 107, 255), rgb(243, 195, 200), rgb(255, 80, 52));
 
-  --container-padding: 5.4rem;
+  --container-padding: 8%;
 }
 
 /* main */
@@ -23,9 +23,8 @@ body {
 }
 
 @keyframes slideBG { 
-  0% {background-position: top left;} 
-  50% {background-position: bottom right;} 
-  100% {background-position: top left;}
+  0%, 100% {background-position: top left;}
+  50% {background-position: bottom right;}
 }
 
 /* Nav */
@@ -114,7 +113,7 @@ body {
   top: 0;
   left: 0;
   z-index: 2;
-  width: CALC(100vw - (2 * var(--container-padding)));
+  width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -125,7 +124,7 @@ body {
 
 .shadeContent__container {
   position: absolute;
-  width: 100vw;
+  width: calc(100vw - (2 * var(--container-padding)));
   opacity: 0;
   transform: rotateX(90deg);
   color: var(--inverse-text-color) ;
@@ -180,4 +179,8 @@ body {
   -webkit-background-clip: text;
   animation: slideBG 20s ease-in-out infinite;
   background-size: 500% 100%;
+}
+
+.nextLine {
+  display: block;
 }
