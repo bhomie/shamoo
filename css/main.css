@@ -1,21 +1,23 @@
 /* reset */
-*,::after,::before{box-sizing:border-box}ol[class],ul[class]{padding:0}blockquote,body,dd,dl,figure,h1,h2,h3,h4,ol[class],p,ul[class]{margin:0}html{font-size: 62.5%;scroll-behavior:smooth}body{min-height:100vh;text-rendering:optimizeSpeed;line-height:1.5}ol[class],ul[class]{list-style:none}a:not([class]){text-decoration-skip-ink:auto}img{max-width:100%;display:block}article>*+*{margin-top:1em}button,input,select,textarea{font:inherit}img:not([alt]){filter:blur(10px)}@media (prefers-reduced-motion:reduce){*{animation-duration:0s!important;animation-iteration-count:1!important;transition-duration:0s!important;scroll-behavior:auto!important}}
+*,::after,::before{box-sizing:border-box}ol[class],ul[class]{padding:0}blockquote,body,dd,dl,figure,h1,h2,h3,h4,ol[class],p,ul[class]{margin:0}html{font-size: 62.5%;scroll-behavior:smooth}body{min-height:100vh;text-rendering:optimizeSpeed;line-height:1.5}ol[class],ul[class]{list-style:none}a:not([class]){text-decoration-skip-ink:auto}img{max-width:100%;display:block}article>*+*{margin-top:1em}button,input,select,textarea{font:inherit;}img:not([alt]){filter:blur(10px)}@media (prefers-reduced-motion:reduce){*{animation-duration:0s!important;animation-iteration-count:1!important;transition-duration:0s!important;scroll-behavior:auto!important}}button{outline: 0;box-shadow: 0;cursor: pointer;}
 /* font-size set to 10px per rem */
 
 :root {
   --main-text-color: white;
-  
+  --inverse-text-color: black;
+  --rainbow: linear-gradient(-45deg, rgb(77, 255, 173), rgb(52, 156, 187), rgb(179, 107, 255), rgb(243, 195, 200), rgb(255, 80, 52));
+
   --container-padding: 5.4rem;
 }
 
 /* main */
 body {
   color: var(--main-text-color);
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-family: 'Raleway', sans-serif;
   min-height: 100vh;
   width: 100vw;
-  background: linear-gradient(-45deg, rgb(77, 255, 173), rgb(52, 156, 187), rgb(179, 107, 255), rgb(243, 195, 200), rgb(255, 80, 52));
+  background: var(--rainbow);
   animation: slideBG 20s ease-in-out infinite;
   background-size: 1000% 100%;
 }
@@ -32,16 +34,18 @@ body {
   grid-template-columns: auto auto auto auto 1fr;
   gap: 1.2rem;
   z-index: 3;
+  color: var(--main-text-color);
+}
+
+.nav.-inverse {
+  color: var(--inverse-text-color);
 }
 
 .nav__button {
-  outline: 0;
-  box-shadow: 0;
-  cursor: pointer;
   padding: 0;
   border: 0;
   background: 0;
-  color: var(--main-text-color);
+  color: inherit;
   text-transform: uppercase;
   font-weight: 900;
   position: relative;
@@ -55,6 +59,10 @@ body {
   width: 0;
   transition: width .1s ease-in-out;
   background-color: var(--main-text-color);
+}
+
+.nav.-inverse .nav__button::before {
+  background-color: var(--inverse-text-color);
 }
 
 .nav__button:hover::before,
@@ -87,20 +95,18 @@ body {
 
 .shade {
   width: 100vw;
-  height: 100vh;
-  /* background-color: var(--main-text-color); */
-  background-color: black;
+  height: 0;
+  background-color: var(--main-text-color);
   position: absolute;
   z-index: 1;
   top: 0;
   left: 0;
-  backdrop-filter: blur(.8rem);
-  opacity: 0;
-  transition: .2s ease-in-out;
+  will-change: height;
+  transition: height .2s ease-in-out;
 }
 
 .shade.-reveal {
-  opacity: .95;
+  height: 100vh;
 }
 
 .shadeContent{
@@ -113,13 +119,61 @@ body {
   display: flex;
   align-items: center;
   padding: var(--container-padding);
+  user-select: none;
+  overflow: hidden;
 }
 
 .shadeContent__container {
   position: absolute;
+  width: 100vw;
   opacity: 0;
-  transition: opacity .2s ease-in-out;
+  transform: rotateX(90deg);
+  color: var(--inverse-text-color) ;
+  transition: transform .2s ease-in-out, opacity .1s ease-in-out;
 }
+
 .shadeContent__container.-reveal {
   opacity: 1;
+  transform: rotateX(0);
+}
+
+.shadeContent__title {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.shadeContent__header {
+  font-size: 6rem ;
+  text-transform: uppercase;
+  line-height: 90%;
+  font-weight: 900;
+  margin-bottom: 2rem;
+}
+
+.shadeContent__body {
+  line-height: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.shadeContent__close {
+  background-color: var(--main-text-color);
+  border: 1px solid #000;
+  border-radius: .6rem;
+  padding: .5rem 1rem;
+  will-change: transform, border-color;
+  transition: transform .2s ease-in-out, border-color .1s ease-in-out;
+}
+.shadeContent__close:hover {
+  transform: scale(1.2);
+  border-color: #fff;
+}
+
+.rainbowText {
+  color: transparent;
+  background: var(--rainbow);
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: slideBG 20s ease-in-out infinite;
+  background-size: 500% 100%;
 }

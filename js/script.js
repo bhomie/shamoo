@@ -1,29 +1,47 @@
-const navButton = document.querySelectorAll('button')
+const navButtons = document.querySelectorAll('button.nav__button')
+const navSections = document.querySelectorAll('section')
+const closeButtons = document.querySelectorAll('button.shadeContent__close')
 const shade = document.querySelector('div.shade')
+const nav = document.querySelector('nav')
+
 let clickedButton = ""
 
 
-for (i = 0; i < navButton.length; i++) {
-  navButton[i].addEventListener('click', () =>
-  revealSection()
-)}
+navButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    revealSection()
+  })
+})
+
+closeButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    closeShade()
+  })
+})
 
 function revealSection() {
-  let inactive = document.querySelectorAll('section')
-  clickedButton = (event.target)
+  clickedButton = event.target
 
-  for(i = 0; i < inactive.length; i++) {
-     inactive[i].classList.remove('-reveal')
-  }
-  for(i = 0; i < navButton.length; i++) {
-      navButton[i].classList.remove('-active')
-  }
-
-  clickedButton.classList.add('-active')
+  navButtons.forEach((button, index) => {
+    if(clickedButton.getAttribute('navTo') == navSections[index].getAttribute('content')) {
+      button.classList.add('-active')
+      navSections[index].classList.add('-reveal')
+    } else {
+      button.classList.remove('-active')
+      navSections[index].classList.remove('-reveal')
+    }
+  })
   
-  let matchedSection = document.querySelector('section[content='+clickedButton.getAttribute('navTo')+']')
-  
-
-  matchedSection.classList.add('-reveal')
+  nav.classList.add('-inverse')
   shade.classList.add('-reveal')
   }
+
+function closeShade(){
+  navButtons.forEach((button, index) => {
+    button.classList.remove('-active')
+    navSections[index].classList.remove('-reveal')
+  })
+
+  nav.classList.remove('-inverse')
+  shade.classList.remove('-reveal')
+}

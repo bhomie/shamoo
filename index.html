@@ -16,14 +16,14 @@
 <body>
   <div class="container">
     <nav class="nav">
-      <button class="nav__button">Brian Sander</button>
+      <span class="nav__button">Brian Sander</span>
       <button navTo="work" class="nav__button">Work</button>
       <button navTo="about" class="nav__button">About</button>
       <button navTo="contact" class="nav__button">Contact</button>
     </nav>
     <main>
       <div class="intro">
-        Brian Sander is a product designer with 7 years of experience making the world a better place.
+        this<br />is<br />the<br />way
       </div>
     </main>
     <footer class="footer">
@@ -32,25 +32,29 @@
 </div>
 <div class="shadeContent">
   <section content="work" class="shadeContent__container">
-    <h1>Work</h1>
-    <h2>See my latest work in my portfolio</h2>
-    <p>You'll have to request access to view the slides. I try to keep my portfolio as up to date as possible.</p>
+    <h1 class="shadeContent__title">Work</h1>
+    <h2 class="shadeContent__header">See my latest work <span class="rainbowText">in my portfolio</span> </h2>
+    <p class="shadeContent__body">You'll have to request access to view the slides. I try to keep my portfolio as up to date as possible.</p>
+    <button class='shadeContent__close'>close</button>
   </section>
   
   <section content="about" class="shadeContent__container">
-    <h1>About</h1>
-    <h2>Oh Hai! I'm Brian Designer & Maker</h2>
-    <p>
+    <h1 class="shadeContent__title">About</h1>
+    <h2 class="shadeContent__header">Oh Hai! I'm Brian <span class="rainbowText">Designer & Maker</span></h2>
+    <p class="shadeContent__body">
       I’m relentless. I do the hard work. I care about forging experiences that better people’s lives. I believe the best work comes from the interplay of evidence, experience, motion, and collaboration. Time to time you can find me bringing my designs to life in code.
-      <br />
+    </p>
+    <p class="shadeContent__body">
       I enjoy video games, you can catch me streaming them sometimes on Twitch! I also stream other things like illustration, UX, motion graphics, and 3D Modelling. I’ve taken a huge liking to environment design and have started to create my own worlds in Cinema4d. Other than that you can find me reading a book (I just finished Ready Player One.) Oh and I love sci-fi flicks, only second to my collection of kicks.
     </p>
+    <button class='shadeContent__close'>close</button>
   </section>
 
   <section content="contact" class="shadeContent__container">
-    <h1>Contact</h1>
-    <h2>Don't be shy, just say Hi@Briansander.com</h2>
-    <p>Also on Instagram, Twitter, Codepen, and Linkedin.</p>
+    <h1 class="shadeContent__title">Contact</h1>
+    <h2 class="shadeContent__header">Don't be shy, just say <span class="rainbowText">Hi@Briansander.com</span></h2>
+    <p class="shadeContent__body">Also on Instagram, Twitter, Codepen, and Linkedin.</p>
+    <button class='shadeContent__close'>close</button>
   </section>
 
 </div>
