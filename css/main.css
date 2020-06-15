@@ -130,6 +130,7 @@ body {
   transform: rotateX(90deg);
   color: var(--inverse-text-color) ;
   transition: transform .2s ease-in-out, opacity .1s ease-in-out;
+  will-change: transform, opactiy;
 }
 
 .shadeContent__container.-reveal {
@@ -161,12 +162,15 @@ body {
   border: 1px solid #000;
   border-radius: .6rem;
   padding: .5rem 1rem;
-  will-change: transform, border-color;
-  transition: transform .2s ease-in-out, border-color .1s ease-in-out;
+  will-change: transform, border-color, box-shadow;
+  transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out, transform .2s ease-in-out;
+  transform: translate3d(0, 0, 0);
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px;
 }
 .shadeContent__close:hover {
-  transform: scale(1.2);
-  border-color: #fff;
+  border-color: transparent;
+  transform: translate3d(0, -2px, 0);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 4px 0px;
 }
 
 .rainbowText {
