@@ -1,6 +1,7 @@
 const navButtons = document.querySelectorAll('button')
 const navSections = document.querySelectorAll('section')
 const shade = document.querySelector('div.shade')
+const nav = document.querySelector('nav')
 
 let clickedButton = ""
 
@@ -23,6 +24,7 @@ function revealSection() {
       navSections[index].classList.remove('-reveal')
     }
   })
-
+  
+  nav.classList.add('-inverse')
   shade.classList.add('-reveal')
   }
