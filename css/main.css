@@ -27,6 +27,21 @@ body {
   50% {background-position: bottom right;}
 }
 
+/* Helper Modifiers */
+.-rainbowText {
+  color: transparent;
+  background: var(--rainbow);
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: slideBG 20s ease-in-out infinite;
+  background-size: 500% 100%;
+  line-height: 100%; /*include decenders*/
+}
+
+.-nextLine {
+  display: block;
+}
+
 /* Nav */
 .nav {
   display: grid;
@@ -170,18 +185,4 @@ body {
   border-color: transparent;
   transform: translate3d(0, -2px, 0);
   box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 4px 0px;
-}
-
-.-rainbowText {
-  color: transparent;
-  background: var(--rainbow);
-  background-clip: text;
-  -webkit-background-clip: text;
-  animation: slideBG 20s ease-in-out infinite;
-  background-size: 500% 100%;
-  line-height: 100%; /*include decenders*/
-}
-
-.-nextLine {
-  display: block;
 }
