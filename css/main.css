@@ -10,11 +10,17 @@
   --container-padding: 8%;
 }
 
+
+*{
+  font-family: 'Raleway', sans-serif;
+  font-variant-alternates: normal;
+}
+
 /* main */
 body {
   color: var(--main-text-color);
   font-size: 1.8rem;
-  font-family: 'Raleway', sans-serif;
+  font-family: inherit;
   min-height: 100vh;
   width: 100vw;
   background: var(--rainbow);
@@ -45,7 +51,7 @@ body {
 /* Nav */
 .nav {
   display: grid;
-  grid-template-columns: auto auto auto auto 1fr;
+  grid-template-columns: 8vw auto auto auto 1fr;
   gap: 1.2rem;
   z-index: 3;
   color: var(--main-text-color);
@@ -60,9 +66,12 @@ body {
   border: 0;
   background: 0;
   color: inherit;
-  text-transform: uppercase;
   font-weight: 900;
   position: relative;
+}
+
+.nav__button.-logo {
+  font-size: 2.4rem;
 }
 
 .nav__button::before {
@@ -131,7 +140,7 @@ body {
   width: 100vw;
   height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: start;
   padding: var(--container-padding);
   user-select: none;
   overflow: hidden;
@@ -145,6 +154,11 @@ body {
   color: var(--inverse-text-color) ;
   transition: transform .2s ease-in-out, opacity .1s ease-in-out;
   will-change: transform, opactiy;
+  display: grid;
+  grid-gap: 6vw;
+  grid-template-columns: 21px auto;
+  margin-top: 6vh;
+  transform-origin: top;
 }
 
 .shadeContent__container.-reveal {
@@ -156,6 +170,10 @@ body {
   font-size: 1.6rem;
   text-transform: uppercase;
   margin-bottom: 2rem;
+  height: 20px;
+  width: 500px;
+  transform: rotate(90deg);
+  transform-origin: 0 100%;
 }
 
 .shadeContent__header {
