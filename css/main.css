@@ -34,7 +34,7 @@ body {
 }
 
 /* Helper Modifiers */
-.-rainbowText {
+.-rainbowText, a {
   color: transparent;
   background: var(--rainbow);
   background-clip: text;
