@@ -142,7 +142,6 @@ body {
   display: flex;
   align-items: start;
   padding: var(--container-padding);
-  user-select: none;
   overflow: hidden;
 }
 
