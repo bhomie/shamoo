@@ -33,15 +33,26 @@ body {
   50% {background-position: bottom right;}
 }
 
+/* links  */
+a{
+  font-weight: 700;
+  transition: transform 500ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: inline-block;
+}
+a:hover{
+  transform-origin: center;
+  transform: scale(.9);
+}
+
 /* Helper Modifiers */
-.-rainbowText, a {
+.-rainbowText, a{
   color: transparent;
   background: var(--rainbow);
   background-clip: text;
   -webkit-background-clip: text;
   animation: slideBG 20s ease-in-out infinite;
   background-size: 500% 100%;
-  line-height: 100%; /*include decenders*/
+  line-height: 110%; /*include decenders*/
 }
 
 .-nextLine {
@@ -93,6 +104,14 @@ body {
   width: 3rem;
 }
 
+/* emoji  */
+.emoji {
+  position: absolute;
+  font-size: 48px;
+  transition: all 0.5s;
+  z-index: 4;
+}
+
 /* footer */
 .footer {
   text-align: center;
@@ -107,6 +126,7 @@ body {
   grid-template-rows: auto 1fr auto;
   gap: 2rem;
   align-items: center;
+  text-align: left;
 }
 
 .intro {
@@ -114,6 +134,11 @@ body {
   font-size: 8rem;
   text-transform: uppercase;
   line-height: 90%;
+}
+
+.subhead{
+ font-size: 2rem;
+ font-style: italic;
 }
 
 .shade {
