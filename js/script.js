@@ -3,6 +3,8 @@ const navSections = document.querySelectorAll('section')
 const closeButtons = document.querySelectorAll('button.shadeContent__close')
 const shade = document.querySelector('div.shade')
 const nav = document.querySelector('nav')
+const selector = document.querySelector('.swapper');
+const titles = ["hero of time", "dragon slayer", "mentor", "creator", "prompt writer", "dreamer", "vocaloid", "space cowboy", "game addict"];
 const emojis = [
   "😀", "😁", "😂", "🤣", "😃", "😄", "😅", "😆", "😉", "😊", "😋", "😎", "😍", "😘", "😗", "😙", "😚", "😛", "🤔", "🤨", 
   "😐", "😑", "😶", "🙄", "😏", "😣", "😥", "😮", "🤐", "😯", "😪", "😫", "😴", "😌", "😛", "😜", "😝", "🤤", "😒", "😓", 
@@ -11,9 +13,10 @@ const emojis = [
   "👺", "💀", "👻", "👽", "🤖", "😺", "😸", "😹", "😻", "😼", "😽", "🙀", "😿", "😾"
 ];
 
-
 let clickedButton = ""
-
+let currentTitle = "";
+let index = 0;
+let interval;
 
 navButtons.forEach(button => {
   button.addEventListener('click', () => {
@@ -54,12 +57,6 @@ function closeShade(){
   shade.classList.remove('-reveal')
 }
 
-const selector = document.querySelector('.swapper');
-const titles = ["Hero of time", "dragon slayer", "mentor", "creator", "prompt writer", "dreamer", "vocaloid", "space cowboy", "game addict"];
-
-let currentTitle = "";
-let index = 0;
-let interval;
 
 const changeText = () => {
   if (index >= currentTitle.length) {
@@ -88,8 +85,8 @@ logo.addEventListener('mousedown', () => {
   emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
 
   const { left, top, width, height } = logo.getBoundingClientRect();
-  emoji.style.left = `${left - (width / 5)}px`;
-  emoji.style.top = `${top - (height / 2)}px`;
+  emoji.style.left = `${left + (width / 2) - 30}px`;
+  emoji.style.top = `${top + (height / 2) - 30}px`;
 
   document.body.appendChild(emoji);
 

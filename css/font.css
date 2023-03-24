@@ -1,0 +1,9 @@
+@font-face {
+    font-family: "ddc-bold";
+    src: url("../fonts/domaine-display-condensed-bold.woff2") format('woff2');
+  }
+
+  @font-face {
+    font-family: "dd-black";
+    src: url("../fonts/domaine-display-black.woff2") format('woff2');
+  }
