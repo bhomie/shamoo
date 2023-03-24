@@ -29,7 +29,7 @@ body {
 }
 
 @keyframes slideBG { 
-  0%, 100% {background-position: top left;}
+  0%, 100% {background-position: top left;} 
   50% {background-position: bottom right;}
 }
 
@@ -186,14 +186,14 @@ body {
 
 .shadeContent__body {
   line-height: 2.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 
 .shadeContent__close {
   background-color: var(--main-text-color);
   border: 1px solid #000;
   border-radius: .6rem;
-  padding: .5rem 1rem;
+  padding: 2rem 4rem;
   will-change: transform, border-color, box-shadow;
   transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out, transform .2s ease-in-out;
   transform: translate3d(0, 0, 0);
