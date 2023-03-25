@@ -4,6 +4,7 @@ const closeButtons = document.querySelectorAll('button.shadeContent__close')
 const shade = document.querySelector('div.shade')
 const nav = document.querySelector('nav')
 const selector = document.querySelector('.swapper');
+const logo = document.querySelector('.-logo');
 const titles = ["hero of time", "dragon slayer", "mentor", "creator", "prompt writer", "dreamer", "vocaloid", "space cowboy", "game addict"];
 const emojis = [
   "😀", "😁", "😂", "🤣", "😃", "😄", "😅", "😆", "😉", "😊", "😋", "😎", "😍", "😘", "😗", "😙", "😚", "😛", "🤔", "🤨", 
@@ -13,14 +14,15 @@ const emojis = [
   "👺", "💀", "👻", "👽", "🤖", "😺", "😸", "😹", "😻", "😼", "😽", "🙀", "😿", "😾"
 ];
 
-let clickedButton = ""
 let currentTitle = "";
 let index = 0;
 let interval;
 
+// lisetners
+
 navButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    revealSection()
+  button.addEventListener('click', (e) => {
+    revealSection(e)
   })
 })
 
@@ -30,11 +32,11 @@ closeButtons.forEach(button => {
   })
 })
 
-function revealSection() {
-  clickedButton = event.target
+// functions 
 
+function revealSection(e){
   navButtons.forEach((button, index) => {
-    if(clickedButton.getAttribute('navTo') == navSections[index].getAttribute('content')) {
+    if(e.target.getAttribute('navTo') == navSections[index].getAttribute('content')) {
       button.classList.add('-active')
       navSections[index].classList.add('-reveal')
     } else {
@@ -45,7 +47,7 @@ function revealSection() {
   
   nav.classList.add('-inverse')
   shade.classList.add('-reveal')
-  }
+}
 
 function closeShade(){
   navButtons.forEach((button, index) => {
@@ -76,8 +78,6 @@ const changeText = () => {
 };
 
 interval = setInterval(changeText, 100);
-
-const logo = document.querySelector('.-logo');
 
 logo.addEventListener('mousedown', () => {
   const emoji = document.createElement('div');
