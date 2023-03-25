@@ -203,6 +203,8 @@ a, a:visited {
   transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out, transform .2s ease-in-out;
   transform: translate3d(0, 0, 0);
   box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+  /* Temp margin before moving button outside of shade */
+  margin-top: 4rem;
 }
 
 .shadeContent__close:hover {
