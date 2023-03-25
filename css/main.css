@@ -185,12 +185,12 @@ a, a:visited {
   font-size: 10vw ;
   text-transform:initial;
   line-height: 90%;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 
 .shadeContent__body {
   line-height: 2.5rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 
 }
 
