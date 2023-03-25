@@ -14,14 +14,15 @@ const emojis = [
   "👺", "💀", "👻", "👽", "🤖", "😺", "😸", "😹", "😻", "😼", "😽", "🙀", "😿", "😾"
 ];
 
-let clickedButton = ""
 let currentTitle = "";
 let index = 0;
 let interval;
 
+// lisetners
+
 navButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    revealSection()
+  button.addEventListener('click', (e) => {
+    revealSection(e)
   })
 })
 
@@ -31,11 +32,11 @@ closeButtons.forEach(button => {
   })
 })
 
-function revealSection() {
-  clickedButton = event.target
+// functions 
 
+function revealSection(e){
   navButtons.forEach((button, index) => {
-    if(clickedButton.getAttribute('navTo') == navSections[index].getAttribute('content')) {
+    if(e.target.getAttribute('navTo') == navSections[index].getAttribute('content')) {
       button.classList.add('-active')
       navSections[index].classList.add('-reveal')
     } else {
@@ -46,7 +47,7 @@ function revealSection() {
   
   nav.classList.add('-inverse')
   shade.classList.add('-reveal')
-  }
+}
 
 function closeShade(){
   navButtons.forEach((button, index) => {
