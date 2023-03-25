@@ -4,6 +4,7 @@ const closeButtons = document.querySelectorAll('button.shadeContent__close')
 const shade = document.querySelector('div.shade')
 const nav = document.querySelector('nav')
 const selector = document.querySelector('.swapper');
+const logo = document.querySelector('.-logo');
 const titles = ["hero of time", "dragon slayer", "mentor", "creator", "prompt writer", "dreamer", "vocaloid", "space cowboy", "game addict"];
 const emojis = [
   "😀", "😁", "😂", "🤣", "😃", "😄", "😅", "😆", "😉", "😊", "😋", "😎", "😍", "😘", "😗", "😙", "😚", "😛", "🤔", "🤨", 
@@ -76,8 +77,6 @@ const changeText = () => {
 };
 
 interval = setInterval(changeText, 100);
-
-const logo = document.querySelector('.-logo');
 
 logo.addEventListener('mousedown', () => {
   const emoji = document.createElement('div');
