@@ -85,22 +85,22 @@ logo.addEventListener('mousedown', () => {
   emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
 
   const { left, top, width, height } = logo.getBoundingClientRect();
-  emoji.style.left = `${left + (width / 2) - 30}px`;
-  emoji.style.top = `${top + (height / 2) - 30}px`;
+  emoji.style.left = `${left + (width / 2)}px`;
+  emoji.style.top = `${top + (height / 2)}px`;
 
   document.body.appendChild(emoji);
 
   setTimeout(() => {
-    emoji.style.transform = `scale(1.5)`;
+    emoji.style.transform = `scale(20)`;
     emoji.style.transition = `all 0.5s cubic-bezier(0.42, 0, 0.58, 1)`;
   }, 80);
 
-  emoji.addEventListener('mouseleave', () => {
+  setTimeout(() => {
     emoji.style.transform = `scale(0)`;
     emoji.style.transition = `all 0.5s cubic-bezier(0.42, 0, 0.58, 1)`;
 
     setTimeout(() => {
       emoji.remove();
     }, 500);
-  });
+  }, 1000);
 });

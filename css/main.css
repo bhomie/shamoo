@@ -40,7 +40,7 @@ a:hover{
   transform: scale(.9);
 }
 a, a:visited {
-  color: var(--rainbow);
+  color: var(--inverse-text-color);
 }
 
 /* Helper Modifiers */
@@ -89,14 +89,16 @@ a, a:visited {
   font-size: 4rem;
   font-family: 'ddc-bold';
   width: fit-content;
+  cursor: pointer;
 }
 
 /* emoji  */
 .emoji {
   position: absolute;
-  font-size: 48px;
+  font-size: .5rem;
   transition: all 0.5s;
   z-index: 4;
+  cursor:grab;
 }
 
 /* footer */
@@ -189,7 +191,7 @@ a, a:visited {
 }
 
 .shadeContent__body {
-  line-height: 2.5rem;
+  line-height: 3rem;
   margin-bottom: 2rem;
 
 }
