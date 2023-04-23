@@ -3,20 +3,18 @@ const navSections = document.querySelectorAll('section')
 const closeButtons = document.querySelectorAll('button.shadeContent__close')
 const shade = document.querySelector('div.shade')
 const nav = document.querySelector('nav')
-const selector = document.querySelector('.swapper');
+const swapper = document.querySelector('.swapper');
 const logo = document.querySelector('.-logo');
 const titles = ["hero of time", "dragon slayer", "mentor", "creator", "prompt writer", "dreamer", "vocaloid", "space cowboy", "game addict"];
 const emojis = [
-  "😀", "😁", "😂", "🤣", "😃", "😄", "😅", "😆", "😉", "😊", "😋", "😎", "😍", "😘", "😗", "😙", "😚", "😛", "🤔", "🤨", 
-  "😐", "😑", "😶", "🙄", "😏", "😣", "😥", "😮", "🤐", "😯", "😪", "😫", "😴", "😌", "😛", "😜", "😝", "🤤", "😒", "😓", 
-  "😔", "😕", "🙃", "🤑", "😲", "☹️", "🙁", "😖", "😞", "😟", "😤", "😢", "😭", "😦", "😧", "😨", "😩", "🤯", "😬", "😰", 
-  "😱", "😳", "🤪", "😵", "😡", "😠", "🤬", "😷", "🤒", "🤕", "🤮", "🤧", "😇", "🤠", "🥳", "😈", "👿", "👹", 
+  "😀", "😁", "😂", "🤣", "😃", "😄", "😅", "😆", "😉", "😊", "😋", "😎", "😍", "😘", "😗", "😙", "😚", "😛", "🤔", "🤨",
+  "😐", "😑", "😶", "🙄", "😏", "😣", "😥", "😮", "🤐", "😯", "😪", "😫", "😴", "😌", "😛", "😜", "😝", "🤤", "😒", "😓",
+  "😔", "😕", "🙃", "🤑", "😲", "☹️", "🙁", "😖", "😞", "😟", "😤", "😢", "😭", "😦", "😧", "😨", "😩", "🤯", "😬", "😰",
+  "😱", "😳", "🤪", "😵", "😡", "😠", "🤬", "😷", "🤒", "🤕", "🤮", "🤧", "😇", "🤠", "🥳", "😈", "👿", "👹",
   "👺", "💀", "👻", "👽", "🤖", "😺", "😸", "😹", "😻", "😼", "😽", "🙀", "😿", "😾"
 ];
 
-let currentTitle = "";
 let index = 0;
-let interval;
 
 // lisetners
 
@@ -34,9 +32,9 @@ closeButtons.forEach(button => {
 
 // functions 
 
-function revealSection(e){
+function revealSection(e) {
   navButtons.forEach((button, index) => {
-    if(e.target.getAttribute('navTo') == navSections[index].getAttribute('content')) {
+    if (e.target.getAttribute('navTo') == navSections[index].getAttribute('content')) {
       button.classList.add('-active')
       navSections[index].classList.add('-reveal')
     } else {
@@ -44,12 +42,12 @@ function revealSection(e){
       navSections[index].classList.remove('-reveal')
     }
   })
-  
+
   nav.classList.add('-inverse')
   shade.classList.add('-reveal')
 }
 
-function closeShade(){
+function closeShade() {
   navButtons.forEach((button, index) => {
     button.classList.remove('-active')
     navSections[index].classList.remove('-reveal')
@@ -59,25 +57,40 @@ function closeShade(){
   shade.classList.remove('-reveal')
 }
 
-
 const changeText = () => {
-  if (index >= currentTitle.length) {
-    clearInterval(interval);
-    setTimeout(() => {
-      const newTitle = titles[Math.floor(Math.random() * titles.length)];
-      if (newTitle !== currentTitle) {
-        currentTitle = newTitle;
-        index = 0;
+  let currentTitle = '';
+  const availableTitles = titles.filter(title => title !== currentTitle);
+  const randomIndex = Math.floor(Math.random() * availableTitles.length);
+  const randomTitle = availableTitles[randomIndex] + '.';
+  const msWait = 150;
+  let spaceCounter = 0;
+  
+  // Remove
+  const animChars = document.querySelectorAll('.-animChar');
+  currentTitle = animChars.length;
+  animChars.forEach((char, i) => {
+    char.style.animationDelay = `${(animChars.length - i) * 50}ms`;
+    char.classList.add('-reverse');
+  });
+  
+  // Appear
+  setTimeout(() => {
+    let newInnerHTML = '';
+    for (let i = 0; i < randomTitle.length; i++) {
+      if (randomTitle[i] === ' ') {
+        newInnerHTML += `<span>${randomTitle[i]}</span>`;
+        spaceCounter++
+      } else {
+        newInnerHTML += `<span class="-animChar" style="animation-delay: ${i * 50}ms">${randomTitle[i]}</span>`;
       }
-      interval = setInterval(changeText, 80);
-    }, 2000);
-    return;
-  }
-  selector.innerHTML = currentTitle.substring(0, index + 1);
-  index++;
-};
+    }
+    swapper.innerHTML = newInnerHTML;
+  }, (currentTitle - spaceCounter) * msWait);
+  
+  setTimeout(changeText, ((randomTitle.length - spaceCounter) * msWait) + 5000);
+}
 
-interval = setInterval(changeText, 100);
+changeText();
 
 logo.addEventListener('mousedown', () => {
   const emoji = document.createElement('div');
