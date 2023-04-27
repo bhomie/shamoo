@@ -130,7 +130,7 @@ a, a:visited {
 .emoji {
   position: absolute;
   font-size: .5rem;
-  transition: all 0.5s;
+  transition: all 0.5s var(--bezier-ease-in);
   z-index: 4;
   cursor:grab;
 }
@@ -222,25 +222,13 @@ a, a:visited {
   text-transform:initial;
   line-height: 90%;
   margin-bottom: 4rem;
+  opacity: 0;
 }
 
 .shadeContent__body {
   line-height: 3rem;
   margin-bottom: 2rem;
-
-}
-
-.shadeContent__close {
-  background-color: var(--main-text-color);
-  border: 1px solid #000;
-  border-radius: .6rem;
-  padding: 2rem 4rem;
-  will-change: transform, border-color, box-shadow;
-  transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out, transform .2s ease-in-out;
-  transform: translate3d(0, 0, 0);
-  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px;
-  /* Temp margin before moving button outside of shade */
-  margin-top: 4rem;
+  opacity: 0;
 }
 
 .shadeContent__close:hover {
