@@ -16,35 +16,30 @@ const emojis = [
 
 let index = 0;
 
-// lisetners
-
-navButtons.forEach(button => {
-  button.addEventListener('click', (e) => {
-    revealSection(e)
-  })
-})
-
-closeButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    closeShade()
-  })
-})
+// Event listeners
+navButtons.forEach(button => button.addEventListener('click', revealSection));
+closeButtons.forEach(button => button.addEventListener('click', closeShade));
 
 // functions 
 
 function revealSection(e) {
   navButtons.forEach((button, index) => {
-    if (e.target.getAttribute('navTo') == navSections[index].getAttribute('content')) {
-      button.classList.add('-active')
-      navSections[index].classList.add('-reveal')
-    } else {
-      button.classList.remove('-active')
-      navSections[index].classList.remove('-reveal')
-    }
-  })
+    const section = navSections[index];
+    const isActive = e.target.getAttribute('navTo') === section.getAttribute('content');
+    
+    button.classList.toggle('-active', isActive);
+    section.classList.toggle('-reveal', isActive);
+    
+    // const paragraphs = section.querySelectorAll('.shadeContent__body');
+    const paragraphs = section.querySelectorAll('h2,p');
+    paragraphs.forEach((paragraph, i) => {
+      paragraph.classList.toggle('-fadeIn', isActive);
+      paragraph.style.animationDelay = isActive ? `${i * 300}ms` : '';
+    });
+  });
 
-  nav.classList.add('-inverse')
-  shade.classList.add('-reveal')
+  nav.classList.add('-inverse');
+  shade.classList.add('-reveal');
 }
 
 function closeShade() {
@@ -57,17 +52,16 @@ function closeShade() {
   shade.classList.remove('-reveal')
 }
 
-const changeText = () => {
-  let currentTitle = '';
-  const availableTitles = titles.filter(title => title !== currentTitle);
-  const randomIndex = Math.floor(Math.random() * availableTitles.length);
-  const randomTitle = availableTitles[randomIndex] + '.';
+const titleChange = () => {
+  let currentTitle = swapper.textContent.trim();
+  let availableTitles = titles.filter(title => title !== currentTitle);
+  let randomIndex = Math.floor(Math.random() * availableTitles.length);
+  let randomTitle = availableTitles[randomIndex] + '.';
   const msWait = 150;
   let spaceCounter = 0;
   
   // Remove
   const animChars = document.querySelectorAll('.-animChar');
-  currentTitle = animChars.length;
   animChars.forEach((char, i) => {
     char.style.animationDelay = `${(animChars.length - i) * 50}ms`;
     char.classList.add('-reverse');
@@ -85,14 +79,18 @@ const changeText = () => {
       }
     }
     swapper.innerHTML = newInnerHTML;
-  }, (currentTitle - spaceCounter) * msWait);
+  }, (animChars.length - spaceCounter) * msWait);
   
-  setTimeout(changeText, ((randomTitle.length - spaceCounter) * msWait) + 5000);
+  setTimeout(titleChange, ((randomTitle.length - spaceCounter) * msWait) + 3000);
 }
 
-changeText();
+titleChange();
 
-logo.addEventListener('mousedown', () => {
+
+//Emoji
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+logo.addEventListener('mousedown', async () => {
   const emoji = document.createElement('div');
   emoji.classList.add('emoji');
   emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
@@ -103,17 +101,14 @@ logo.addEventListener('mousedown', () => {
 
   document.body.appendChild(emoji);
 
-  setTimeout(() => {
-    emoji.style.transform = `scale(20)`;
-    emoji.style.transition = `all 0.5s cubic-bezier(0.42, 0, 0.58, 1)`;
-  }, 80);
+  emoji.style.transition = `all 500ms cubic-bezier(0.42, 0, 0.58, 1)`;
 
-  setTimeout(() => {
-    emoji.style.transform = `scale(0)`;
-    emoji.style.transition = `all 0.5s cubic-bezier(0.42, 0, 0.58, 1)`;
+  await delay(80);
+  emoji.style.transform = `scale(20)`;
 
-    setTimeout(() => {
-      emoji.remove();
-    }, 500);
-  }, 1000);
+  await delay(920);
+  emoji.style.transform = `scale(0)`;
+
+  await delay(500);
+  emoji.remove();
 });
