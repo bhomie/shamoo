@@ -43,6 +43,16 @@ body {
   100% {opacity: 1;transform: translateY(0);}
 }
 
+@keyframes closeBtn {
+  0% {transform: scale(.9) translateY(-10px) rotateX(90deg); opacity: 1;}
+  80% {transform: scale(1.3);}
+  100% {transform: translateY(0px) rotateX(0) scale(1.3); opacity: 1.3;}
+}
+@keyframes closeBtn-1 {
+  0% {transform: scale(1);}
+  100% {transform: scale(.7);}
+}
+
 /* links  */
 a{
   font-weight: 700;
@@ -116,7 +126,30 @@ a, a:visited {
 }
 
 .nav__button.-active {
-  opacity: .2;
+  animation: closeBtn-1 2000ms var(--bezier-ease-in) forwards;
+  animation-delay: 1000ms;
+}
+
+.nav__button.-active::after {
+  content: "CLOSE";
+  position: absolute;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.9rem 1rem;
+  top: 23%;
+  right: 0;
+  opacity: 1;
+  font-size: 1rem;
+  background-color: white;
+  border-radius: 1rem;
+  outline: .1rem solid black;
+  animation: closeBtn 2000ms var(--bezier-ease-in) forwards;
+  animation-delay: 1000ms;
+  opacity: 0;
+}
+
+.nav__button.-active:nth-child(4)::after {
+  width: 70px;
 }
 
 .nav__button.-logo {
@@ -130,7 +163,7 @@ a, a:visited {
 .emoji {
   position: absolute;
   font-size: .5rem;
-  transition: all 0.5s var(--bezier-ease-in);
+  transition: all 500ms var(--bezier-ease-in);
   z-index: 4;
   cursor:grab;
 }
@@ -229,10 +262,4 @@ a, a:visited {
   line-height: 3rem;
   margin-bottom: 2rem;
   opacity: 0;
-}
-
-.shadeContent__close:hover {
-  border-color: transparent;
-  transform: translate3d(0, -2px, 0);
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 4px 0px;
 }
