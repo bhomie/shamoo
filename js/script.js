@@ -1,85 +1,90 @@
 const navButtons = document.querySelectorAll('button.nav__button')
 const navSections = document.querySelectorAll('section')
-const closeButtons = document.querySelectorAll('button.shadeContent__close')
 const shade = document.querySelector('div.shade')
 const nav = document.querySelector('nav')
-const selector = document.querySelector('.swapper');
+const swapper = document.querySelector('.swapper');
 const logo = document.querySelector('.-logo');
 const titles = ["hero of time", "dragon slayer", "mentor", "creator", "prompt writer", "dreamer", "vocaloid", "space cowboy", "game addict"];
 const emojis = [
-  "😀", "😁", "😂", "🤣", "😃", "😄", "😅", "😆", "😉", "😊", "😋", "😎", "😍", "😘", "😗", "😙", "😚", "😛", "🤔", "🤨", 
-  "😐", "😑", "😶", "🙄", "😏", "😣", "😥", "😮", "🤐", "😯", "😪", "😫", "😴", "😌", "😛", "😜", "😝", "🤤", "😒", "😓", 
-  "😔", "😕", "🙃", "🤑", "😲", "☹️", "🙁", "😖", "😞", "😟", "😤", "😢", "😭", "😦", "😧", "😨", "😩", "🤯", "😬", "😰", 
-  "😱", "😳", "🤪", "😵", "😡", "😠", "🤬", "😷", "🤒", "🤕", "🤮", "🤧", "😇", "🤠", "🥳", "😈", "👿", "👹", 
+  "😀", "😁", "😂", "🤣", "😃", "😄", "😅", "😆", "😉", "😊", "😋", "😎", "😍", "😘", "😗", "😙", "😚", "😛", "🤔", "🤨",
+  "😐", "😑", "😶", "🙄", "😏", "😣", "😥", "😮", "🤐", "😯", "😪", "😫", "😴", "😌", "😛", "😜", "😝", "🤤", "😒", "😓",
+  "😔", "😕", "🙃", "🤑", "😲", "☹️", "🙁", "😖", "😞", "😟", "😤", "😢", "😭", "😦", "😧", "😨", "😩", "🤯", "😬", "😰",
+  "😱", "😳", "🤪", "😵", "😡", "😠", "🤬", "😷", "🤒", "🤕", "🤮", "🤧", "😇", "🤠", "🥳", "😈", "👿", "👹",
   "👺", "💀", "👻", "👽", "🤖", "😺", "😸", "😹", "😻", "😼", "😽", "🙀", "😿", "😾"
 ];
 
-let currentTitle = "";
-let index = 0;
-let interval;
+// Event listeners
+navButtons.forEach(button => button.addEventListener('click', revealSection));
 
-// lisetners
+// Functions
+function revealSection(e) {
+  nav.classList.add('-inverse');
+  shade.classList.add('-reveal');
 
-navButtons.forEach(button => {
-  button.addEventListener('click', (e) => {
-    revealSection(e)
-  })
-})
-
-closeButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    closeShade()
-  })
-})
-
-// functions 
-
-function revealSection(e){
   navButtons.forEach((button, index) => {
-    if(e.target.getAttribute('navTo') == navSections[index].getAttribute('content')) {
-      button.classList.add('-active')
-      navSections[index].classList.add('-reveal')
+    const section = navSections[index];
+    const isActive = e.target.getAttribute('navTo') === section.getAttribute('content');
+    
+    button.classList.toggle('-active', isActive);
+    section.classList.toggle('-reveal', isActive);
+    animateParagraphs(section, isActive);
+
+    if (isActive && button.classList.contains('-active')) {
+      button.removeEventListener('click', revealSection);
+      button.addEventListener('click', closeShade);
     } else {
-      button.classList.remove('-active')
-      navSections[index].classList.remove('-reveal')
+      button.removeEventListener('click', closeShade);
+      button.addEventListener('click', revealSection);
     }
-  })
-  
-  nav.classList.add('-inverse')
-  shade.classList.add('-reveal')
+  });
 }
 
-function closeShade(){
+function animateParagraphs(section, isActive) {
+  const paragraphs = section.querySelectorAll('h2,p');
+  paragraphs.forEach((paragraph, i) => {
+    paragraph.classList.toggle('-fadeIn', isActive);
+    paragraph.style.animationDelay = isActive ? `${i * 300}ms` : '';
+  });
+}
+
+function closeShade() {
   navButtons.forEach((button, index) => {
-    button.classList.remove('-active')
-    navSections[index].classList.remove('-reveal')
-  })
+    button.classList.remove('-active');
+    navSections[index].classList.remove('-reveal');
+  });
+  //fix this in future - bug: clicking logo out of a shade will make the button unclickable
+  navButtons.forEach(button => button.addEventListener('click', revealSection));
 
-  nav.classList.remove('-inverse')
-  shade.classList.remove('-reveal')
+  nav.classList.remove('-inverse');
+  shade.classList.remove('-reveal');
 }
 
+// Title Change
+const titleChange = async () => {
+  const currentTitle = swapper.textContent.trim();
+  const availableTitles = titles.filter(title => title !== currentTitle);
+  const randomTitle = availableTitles[Math.floor(Math.random() * availableTitles.length)] + '.';
+  const msWait = 150;
 
-const changeText = () => {
-  if (index >= currentTitle.length) {
-    clearInterval(interval);
-    setTimeout(() => {
-      const newTitle = titles[Math.floor(Math.random() * titles.length)];
-      if (newTitle !== currentTitle) {
-        currentTitle = newTitle;
-        index = 0;
-      }
-      interval = setInterval(changeText, 80);
-    }, 2000);
-    return;
-  }
-  selector.innerHTML = currentTitle.substring(0, index + 1);
-  index++;
-};
+  const animChars = document.querySelectorAll('.-animChar');
+  animChars.forEach((char, i) => {
+    char.style.animationDelay = `${(animChars.length - i) * 50}ms`;
+    char.classList.add('-reverse');
+  });
 
-interval = setInterval(changeText, 100);
+  await new Promise(resolve => setTimeout(resolve, (animChars.length) * msWait));
+  swapper.innerHTML = randomTitle.split('').map((char, i) => char === ' ' ? `<span>${char}</span>` : `<span class="-animChar" style="animation-delay: ${i * 50}ms">${char}</span>`).join('');
 
-logo.addEventListener('mousedown', () => {
+  setTimeout(titleChange, (randomTitle.length * msWait) + 3000);
+}
+
+titleChange();
+
+// Emoji
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+logo.addEventListener('mousedown', async () => {
+  closeShade();
   const emoji = document.createElement('div');
   emoji.classList.add('emoji');
   emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
@@ -90,17 +95,12 @@ logo.addEventListener('mousedown', () => {
 
   document.body.appendChild(emoji);
 
-  setTimeout(() => {
-    emoji.style.transform = `scale(20)`;
-    emoji.style.transition = `all 0.5s cubic-bezier(0.42, 0, 0.58, 1)`;
-  }, 80);
+  await delay(80);
+  emoji.style.transform = `scale(20)`;
 
-  setTimeout(() => {
-    emoji.style.transform = `scale(0)`;
-    emoji.style.transition = `all 0.5s cubic-bezier(0.42, 0, 0.58, 1)`;
+  await delay(920);
+  emoji.style.transform = `scale(0)`;
 
-    setTimeout(() => {
-      emoji.remove();
-    }, 500);
-  }, 1000);
+  await delay(500);
+  emoji.remove();
 });

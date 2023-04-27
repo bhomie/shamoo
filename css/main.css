@@ -8,6 +8,8 @@
   --rainbow: linear-gradient(-45deg, rgb(77, 255, 173), rgb(52, 156, 187), rgb(179, 107, 255), rgb(243, 195, 200), rgb(255, 80, 52));
 
   --container-padding: 8%;
+
+  --bezier-ease-in: cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 /* main */
@@ -26,6 +28,29 @@ body {
 @keyframes slideBG { 
   0%, 100% {background-position: top left;} 
   50% {background-position: bottom right;}
+}
+
+@keyframes charAnim{
+  0% {transform: rotateY(90deg) translate(-10px,0); opacity: 0,}
+  100% {transform: rotateY(0) translate(0px,0); opacity: 1}
+}
+@keyframes charAnimRev{
+  0% {opacity: 1;transform: translateY(0);}
+  100% {opacity: 0;transform: translateY(1vh);}
+}
+@keyframes fadeIn {
+  0% {opacity: 0;transform: translateY(-20px);}
+  100% {opacity: 1;transform: translateY(0);}
+}
+
+@keyframes closeBtn {
+  0% {transform: scale(.9) translateY(-10px) rotateX(90deg); opacity: 1;}
+  80% {transform: scale(1.3);}
+  100% {transform: translateY(0px) rotateX(0) scale(1.3); opacity: 1.3;}
+}
+@keyframes closeBtn-1 {
+  0% {transform: scale(1);}
+  100% {transform: scale(.7);}
 }
 
 /* links  */
@@ -59,6 +84,24 @@ a, a:visited {
   margin-left: auto;
 }
 
+.-animChar{
+  display: inline-block;
+  animation: charAnim 400ms var(--bezier-ease-in) forwards;
+  transform-origin: center left;
+  opacity: 0;
+}
+
+.-reverse {
+  animation: charAnimRev 400ms var(--bezier-ease-in) forwards;
+  opacity: 1;
+  transform-origin: bottom center;
+}
+
+.-fadeIn {
+  opacity: 0;
+  animation: fadeIn 1000ms var(--bezier-ease-in) forwards;
+}
+
 /* Nav */
 .nav {
   display: grid;
@@ -79,10 +122,34 @@ a, a:visited {
   color: inherit;
   font-weight: 900;
   position: relative;
+  transition: all 800ms var(--bezier-ease-in);
 }
 
 .nav__button.-active {
-  font-weight: 300;
+  animation: closeBtn-1 2000ms var(--bezier-ease-in) forwards;
+  animation-delay: 1000ms;
+}
+
+.nav__button.-active::after {
+  content: "CLOSE";
+  position: absolute;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.9rem 1rem;
+  top: 23%;
+  right: 0;
+  opacity: 1;
+  font-size: 1rem;
+  background-color: white;
+  border-radius: 1rem;
+  outline: .1rem solid black;
+  animation: closeBtn 2000ms var(--bezier-ease-in) forwards;
+  animation-delay: 1000ms;
+  opacity: 0;
+}
+
+.nav__button.-active:nth-child(4)::after {
+  width: 70px;
 }
 
 .nav__button.-logo {
@@ -96,7 +163,7 @@ a, a:visited {
 .emoji {
   position: absolute;
   font-size: .5rem;
-  transition: all 0.5s;
+  transition: all 500ms var(--bezier-ease-in);
   z-index: 4;
   cursor:grab;
 }
@@ -188,29 +255,11 @@ a, a:visited {
   text-transform:initial;
   line-height: 90%;
   margin-bottom: 4rem;
+  opacity: 0;
 }
 
 .shadeContent__body {
   line-height: 3rem;
   margin-bottom: 2rem;
-
-}
-
-.shadeContent__close {
-  background-color: var(--main-text-color);
-  border: 1px solid #000;
-  border-radius: .6rem;
-  padding: 2rem 4rem;
-  will-change: transform, border-color, box-shadow;
-  transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out, transform .2s ease-in-out;
-  transform: translate3d(0, 0, 0);
-  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px;
-  /* Temp margin before moving button outside of shade */
-  margin-top: 4rem;
-}
-
-.shadeContent__close:hover {
-  border-color: transparent;
-  transform: translate3d(0, -2px, 0);
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 4px 0px;
+  opacity: 0;
 }
