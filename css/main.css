@@ -5,9 +5,12 @@
 :root {
   --main-text-color: white;
   --inverse-text-color: black;
-  --rainbow: linear-gradient(-45deg, rgb(77, 255, 173), rgb(52, 156, 187), rgb(179, 107, 255), rgb(243, 195, 200), rgb(255, 80, 52));
+  --rainbow: linear-gradient(-45deg, rgb(77, 255, 173), rgb(52, 156, 187), rgb(179, 107, 255),rgb(253, 121, 101), rgb(255, 80, 52));
 
   --container-padding: 8%;
+  --container-padding-top: 1%;
+  --container-padding-left: 2%;
+
 
   --bezier-ease-in: cubic-bezier(0.33, 1, 0.68, 1);
 }
@@ -141,9 +144,9 @@ a, a:visited {
   opacity: 1;
   font-size: 1rem;
   background-color: white;
-  border-radius: 1rem;
-  outline: .1rem solid black;
-  animation: closeBtn 2000ms var(--bezier-ease-in) forwards;
+  border-radius: 0.2rem;
+  outline: .2rem solid black;
+  animation: closeBtn 1000ms var(--bezier-ease-in) forwards;
   animation-delay: 1000ms;
   opacity: 0;
 }
@@ -176,7 +179,8 @@ a, a:visited {
 
 /* content */
 .container {
-  padding: var(--container-padding);
+  padding-top: var(--container-padding-top);
+  padding-left: var(--container-padding-left);
   display: grid;
   min-height: 100vh;
   grid-template-rows: auto 1fr auto;
@@ -184,7 +188,9 @@ a, a:visited {
   align-items: center;
   text-align: left;
 }
-
+.main-content {
+  margin-bottom: 10%;
+}
 .intro {
   font-family: 'dd-black';
   font-size: 10vw;
@@ -216,7 +222,8 @@ a, a:visited {
   height: 100vh;
   display: flex;
   align-items: start;
-  padding: var(--container-padding);
+  padding-top: var(--container-padding-top);
+  padding-left: var(--container-padding-left);
   overflow: hidden;
 }
 
@@ -262,4 +269,9 @@ a, a:visited {
   line-height: 3rem;
   margin-bottom: 2rem;
   opacity: 0;
+}
+
+.contentContainer {
+  padding-top: 5%;
+  padding-left: var(--container-padding-left);
 }
